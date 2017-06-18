@@ -13,8 +13,8 @@
  * Customer.getProfile().getGoldCard().getDiscount(); --> Optional.map(getter).map(getter)...
   
 - Stream Wrecks - break the long chains of Stream operations  :7'
- * Performance.. Do you really need to stream HUGE amount of data too big for your RAM? 
- * That is, are you using JDBC Cursors / Spring Data JPA methods returning Stream<Entity>?
+ * Break long chains of Stream API calls. Introduce additionally explanatory variables.
+ * Huge chains, only when cannot load whole data in memory - that is, using JDBC Cursors / Spring Data JPA methods returning Stream<Entity>?
 	
 - name your multi-line lambdas (3 STEP)  :4'
  * .map(this::mapToOtherObj)
