@@ -53,10 +53,11 @@
  * implies side effects: if short: OK. To loop over and accumulate some value -> NOT OK. (try .reduce)
 
 
-Github repo:
-https://github.com/victorrentea/devtalks-clean-lambdas.git
+
+ Github repo:
+https://github.com/victorrentea/clean-lambdas-jbcnconf.git
  
-Reach out to me: 
+Please, reach out to me: 
 www.victorrentea.ro
 victor.rentea@gmail.com
 @victorrentea
