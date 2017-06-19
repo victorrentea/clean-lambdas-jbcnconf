@@ -1,27 +1,31 @@
 package victor.clean.lambdas;
 
-import lombok.Getter;
-import lombok.Setter;
-import victor.clean.lambdas.Movie.Type;
-
 public class TypeSpecificFunctionality {
 	public static void main(String[] args) {
-		System.out.println(new Movie().setType(Type.NEW_RELEASE).computePrice(4));
+		System.out.println(new NewReleaseMovie().computePrice(4));
 	}
 }
 
-class Movie {
-	enum Type {
-		CHILDREN, REGULAR, NEW_RELEASE
-	}
-	@Getter @Setter private Type type;
-	
+abstract class Movie {
+	public abstract double computePrice(int daysRented);
+}
+class ChildrenMovieUS extends Movie {
 	public double computePrice(int daysRented) {
-		switch (type) {
-		case CHILDREN: return 5;
-		case REGULAR: return 8 + 0.3 * (daysRented - 8);
-		case NEW_RELEASE: return 10 + 0.5 * daysRented;
-		}
-		return 0; // ?! Panic!
+		return 5;
+	}
+}
+class ChildrenMovieUK extends Movie {
+	public double computePrice(int daysRented) {
+		 return 6;
+	}
+}
+class RegularMovie extends Movie {
+	public double computePrice(int daysRented) {
+		return 8 + 0.3 * (daysRented - 8);
+	}
+}
+class NewReleaseMovie extends Movie {
+	public double computePrice(int daysRented) {
+		return 10 + 0.5 * daysRented;
 	}
 }
