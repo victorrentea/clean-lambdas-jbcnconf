@@ -14,14 +14,18 @@ import java.util.Set;
 public class StreamWrecks {
 	
 	public Set<Product> stuff(List<Order> orders) {
-		return orders.stream()
-			.filter(Order::isNotDelivered)
-			.map(Order::getOrderLines)
-			.flatMap(List::stream)
+		return getOrderLinesNotDelivered(orders).stream()
 			.filter(line -> !line.isInStock())
 			.map(OrderLine::getProduct)
 			.filter(Product::isNotHidden)
 			.collect(toSet());
+	}
+
+	private List<OrderLine> getOrderLinesNotDelivered(List<Order> orders) {
+		return orders.stream()
+			.filter(Order::isNotDelivered)
+			.flatMap(order -> order.getOrderLines().stream())
+			.collect(toList());
 	}
 	
 	public List<Product> stuff2(List<Order> orders) {
