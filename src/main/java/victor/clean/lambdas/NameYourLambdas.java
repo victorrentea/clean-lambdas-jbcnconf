@@ -12,19 +12,23 @@ public class NameYourLambdas {
 
 	//@Autowired
 	private ARepo aRepo;
+	//@Autowired
+	private ABMapper abMapper;
 	
 	private List<B> getAllA() {
 		List<A> allA = aRepo.findAll();
 		return allA.stream()
-			.map(this::mapToB)
+			.map(abMapper::mapToB)
 			.collect(toList());
 	}
 
-	private B mapToB(A a) {
-		B b = new B();
-		b.setFirstNameB(a.getFirstNameA());
-		b.setLastNameB(a.getLastNameA());
-		return b;
+	public static class ABMapper {
+		public B mapToB(A a) {
+			B b = new B();
+			b.setFirstNameB(a.getFirstNameA());
+			b.setLastNameB(a.getLastNameA());
+			return b;
+		}
 	}
 	
 }
