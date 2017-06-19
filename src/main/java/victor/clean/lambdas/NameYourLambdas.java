@@ -16,13 +16,15 @@ public class NameYourLambdas {
 	private List<B> getAllA() {
 		List<A> allA = aRepo.findAll();
 		return allA.stream()
-			.map(a -> {
-				B b = new B();
-				b.setFirstNameB(a.getFirstNameA());
-				b.setLastNameB(a.getLastNameA());
-				return b;
-			})
+			.map(this::mapToB)
 			.collect(toList());
+	}
+
+	private B mapToB(A a) {
+		B b = new B();
+		b.setFirstNameB(a.getFirstNameA());
+		b.setLastNameB(a.getLastNameA());
+		return b;
 	}
 	
 }
