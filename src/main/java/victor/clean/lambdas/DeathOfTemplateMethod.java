@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-public class DeathOfTemplateMethod {
+class EmailService {
 
 	public void sendOrderReceivedEmail(String emailAddress) {
 		EmailContext context = new EmailContext(/*smtpConfig,etc*/);
